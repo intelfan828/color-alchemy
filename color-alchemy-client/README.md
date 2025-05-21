@@ -2,9 +2,9 @@
 
 RGB Alchemy is a color-mixing puzzle game where your goal is to create a color that matches the target color within a limited number of moves. The game combines elements of color theory, strategy, and spatial reasoning.
 
-## 📸 Screenshot
+## 📸 How to play
 
-![Game Screenshot](public/screenshot.png)
+![Game Screenshot](public/RGBAlchemy.gif)
 
 ### Game Mechanics
 
