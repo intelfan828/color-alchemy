@@ -7,22 +7,39 @@
 
 :root {
   /* Color System */
-  /* Primary Colors */
-  --color-primary-red: rgb(255, 0, 0);
-  --color-primary-green: rgb(0, 255, 0);
-  --color-primary-blue: rgb(0, 0, 255);
+  /* Primary Colors - Using Tailwind-like scale */
+  --color-primary-50: rgb(254, 242, 242);
+  --color-primary-100: rgb(254, 226, 226);
+  --color-primary-200: rgb(254, 202, 202);
+  --color-primary-300: rgb(252, 165, 165);
+  --color-primary-400: rgb(248, 113, 113);
+  --color-primary-500: rgb(239, 68, 68);
+  --color-primary-600: rgb(220, 38, 38);
+  --color-primary-700: rgb(185, 28, 28);
+  --color-primary-800: rgb(153, 27, 27);
+  --color-primary-900: rgb(127, 29, 29);
   
   /* Neutral Colors */
-  --color-background: #fff;
-  --color-text: #222;
-  --color-black: rgb(0, 0, 0);
+  --color-gray-50: rgb(249, 250, 251);
+  --color-gray-100: rgb(243, 244, 246);
+  --color-gray-200: rgb(229, 231, 235);
+  --color-gray-300: rgb(209, 213, 219);
+  --color-gray-400: rgb(156, 163, 175);
+  --color-gray-500: rgb(107, 114, 128);
+  --color-gray-600: rgb(75, 85, 99);
+  --color-gray-700: rgb(55, 65, 81);
+  --color-gray-800: rgb(31, 41, 55);
+  --color-gray-900: rgb(17, 24, 39);
   
   /* UI Colors */
-  --color-border: #333;
-  --color-border-light: #ccc;
-  --color-highlight: var(--color-primary-red);
-  --color-shadow: rgba(0, 0, 0, 0.2);
-  --color-shadow-light: rgba(0, 0, 0, 0.08);
+  --color-background: var(--color-gray-50);
+  --color-text: var(--color-gray-900);
+  --color-border: var(--color-gray-300);
+  --color-border-light: var(--color-gray-200);
+  --color-highlight: var(--color-primary-500);
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-shadow-light: rgba(0, 0, 0, 0.05);
+  --color-modal-overlay: rgba(0, 0, 0, 0.4);
 
   /* Spacing System */
   --spacing-xs: 2px;
@@ -65,7 +82,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--color-modal-overlay);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,13 +90,13 @@
 }
 
 .modal-content {
-  background: #fff;
-  color: #222;
+  background: var(--color-gray-50);
+  color: var(--color-gray-900);
   padding: 32px;
   border-radius: 12px;
   min-width: 320px;
   text-align: center;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-md);
 }
 
 .modal-buttons {
@@ -102,12 +119,12 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background: #222;
-  color: #fff;
+  background: var(--color-gray-800);
+  color: var(--color-gray-50);
 }
 
 .error-message {
-  color: red;
+  color: var(--color-primary-500);
   margin: 20px;
 }
 
