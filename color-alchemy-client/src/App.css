@@ -1,10 +1,124 @@
+/* Base styles and CSS reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Color System */
+  /* Primary Colors */
+  --color-primary-red: rgb(255, 0, 0);
+  --color-primary-green: rgb(0, 255, 0);
+  --color-primary-blue: rgb(0, 0, 255);
+  
+  /* Neutral Colors */
+  --color-background: #fff;
+  --color-text: #222;
+  --color-black: rgb(0, 0, 0);
+  
+  /* UI Colors */
+  --color-border: #333;
+  --color-border-light: #ccc;
+  --color-highlight: var(--color-primary-red);
+  --color-shadow: rgba(0, 0, 0, 0.2);
+  --color-shadow-light: rgba(0, 0, 0, 0.08);
+
+  /* Spacing System */
+  --spacing-xs: 2px;
+  --spacing-sm: 4px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Component Sizes */
+  --size-tile: 32px;
+  --size-corner: 36px;
+  --size-swatch: 24px;
+  --size-info-panel-min: 320px;
+
+  /* Border Radius System */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-circle: 50%;
+
+  /* Animation */
+  --transition-fast: 0.2s;
+
+  /* Elevation System */
+  --shadow-sm: 0 2px 8px var(--color-shadow-light);
+  --shadow-md: 0 2px 16px var(--color-shadow);
+
+  /* Typography */
+  --font-size-base: 1em;
+  --font-size-large: 1.1em;
+
+  /* Game Configuration */
+  --win-threshold: 0.1;
+  --initial-moves: 3;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  color: #222;
+  padding: 32px;
+  border-radius: 12px;
+  min-width: 320px;
+  text-align: center;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.modal-buttons {
+  margin-top: 24px;
+}
+
+.modal-button {
+  padding: 8px 24px;
+  font-size: 16px;
+  margin-right: 16px;
+}
+
+.modal-button:last-child {
+  margin-right: 0;
+}
+
+/* App Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #222;
+  color: #fff;
+}
+
+.error-message {
+  color: red;
+  margin: 20px;
+}
+
+/* Layout Components */
 .alchemy-board {
   display: inline-block;
-  background: #fff;
-  border-radius: 10px;
-  padding: 24px 16px 16px 16px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
-  margin: 24px 0;
+  background: var(--color-background);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
+  box-shadow: var(--shadow-md);
+  margin: var(--spacing-lg) 0;
 }
 
 .alchemy-row {
@@ -15,41 +129,94 @@
 
 .alchemy-row-top,
 .alchemy-row-bottom {
-  margin-bottom: 4px;
-  margin-top: 4px;
+  margin: var(--spacing-sm) 0;
 }
 
 .alchemy-corner {
-  width: 36px;
-  height: 36px;
+  width: var(--size-corner);
+  height: var(--size-corner);
   display: inline-block;
 }
 
+/* Game Elements */
 .tile {
-  box-sizing: border-box;
-  border-radius: 6px;
-  transition: border 0.2s;
+  border-radius: var(--radius-sm);
+  transition: border var(--transition-fast);
+  border: 1px solid var(--color-border);
+  width: var(--size-tile);
+  height: var(--size-tile);
+  display: inline-block;
+  margin: var(--spacing-xs);
 }
 
 .tile.highlighted {
-  border: 2px solid red !important;
+  border: 2px solid var(--color-highlight);
+}
+
+.tile.draggable,
+.tile.clickable {
+  cursor: pointer;
 }
 
 .source {
-  box-sizing: border-box;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  transition: border 0.2s;
+  border-radius: var(--radius-circle);
+  border: 2px solid var(--color-background);
+  transition: border var(--transition-fast);
+  width: var(--size-tile);
+  height: var(--size-tile);
+  display: inline-block;
+  margin: var(--spacing-xs);
 }
 
+.source.draggable,
+.source.clickable {
+  cursor: pointer;
+}
+
+/* UI Components */
 .info-panel {
-  background: #fff;
-  color: #222;
-  border-radius: 10px;
-  padding: 16px 24px;
-  margin-top: 32px;
-  margin-bottom: 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  min-width: 320px;
-  font-size: 1.1em;
-} 
+  background: var(--color-background);
+  color: var(--color-text);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin: var(--spacing-xl) 0 0;
+  box-shadow: var(--shadow-sm);
+  min-width: var(--size-info-panel-min);
+  font-size: var(--font-size-large);
+}
+
+.color-swatch {
+  display: inline-block;
+  width: var(--size-swatch);
+  height: var(--size-swatch);
+  border: 1px solid var(--color-border-light);
+  vertical-align: middle;
+}
+
+.loading {
+  text-align: center;
+  padding: var(--spacing-lg);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  :root {
+    --size-tile: 28px;
+    --size-corner: 32px;
+    --size-swatch: 20px;
+    --size-info-panel-min: 280px;
+    --spacing-md: 12px;
+    --spacing-lg: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  :root {
+    --size-tile: 24px;
+    --size-corner: 28px;
+    --size-swatch: 18px;
+    --size-info-panel-min: 240px;
+    --spacing-md: 8px;
+    --spacing-lg: 16px;
+  }
+}

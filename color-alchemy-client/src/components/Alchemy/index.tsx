@@ -30,9 +30,9 @@ function getInitialTiles(width: number, height: number): TileState[][] {
 }
 
 const PRIMARY_COLORS: number[][] = [
-  [255,0,0],
-  [0,255,0],
-  [0,0,255],
+  [255, 0, 0], // Red
+  [0, 255, 0], // Green
+  [0, 0, 255], // Blue
 ];
 
 const Alchemy: React.FC<AlchemyProps> = ({ data, movesLeft, onMove, onGameEnd }) => {
@@ -55,9 +55,6 @@ const Alchemy: React.FC<AlchemyProps> = ({ data, movesLeft, onMove, onGameEnd })
     if (!data) return;
     const newTiles = computeTiles(sources);
     setTiles(newTiles);
-    // Optionally, call onMove here if you want to track every update
-    // onMove(newTiles, sources);
-    // eslint-disable-next-line
   }, [sources]);
 
   // On every move, check for win/lose
@@ -67,7 +64,6 @@ const Alchemy: React.FC<AlchemyProps> = ({ data, movesLeft, onMove, onGameEnd })
     if (movesLeft <= 0 || closest.delta < 0.1) {
       onGameEnd(closest.delta < 0.1);
     }
-    // eslint-disable-next-line
   }, [tiles, movesLeft]);
 
   if (!data) return null;

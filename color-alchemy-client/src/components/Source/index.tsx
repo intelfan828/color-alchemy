@@ -11,16 +11,9 @@ interface SourceProps {
 const Source: React.FC<SourceProps> = ({ color = [0,0,0], onClick, onDrop, onDragOver, draggable }) => {
   return (
     <div
-      className="source"
+      className={`source${draggable ? ' draggable' : ''}${onClick ? ' clickable' : ''}`}
       style={{
         background: `rgb(${color.join(",")})`,
-        border: '2px solid #fff',
-        borderRadius: '50%',
-        width: 32,
-        height: 32,
-        display: 'inline-block',
-        margin: 2,
-        cursor: onClick || draggable ? 'pointer' : 'default',
       }}
       title={`rgb(${color.join(", ")})`}
       onClick={onClick}

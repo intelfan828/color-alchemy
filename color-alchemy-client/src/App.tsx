@@ -16,16 +16,13 @@ export interface GameData {
 function GameEndModal({ open, success, onOk, onCancel }: { open: boolean, success: boolean, onOk: () => void, onCancel: () => void }) {
   if (!open) return null;
   return (
-    <div style={{
-      position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
-      background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000
-    }}>
-      <div style={{ background: '#fff', color: '#222', padding: 32, borderRadius: 12, minWidth: 320, textAlign: 'center', boxShadow: '0 2px 16px #0008' }}>
+    <div className="modal-overlay">
+      <div className="modal-content">
         <h2>{success ? 'Success!' : 'Game Over'}</h2>
         <p>{success ? 'You matched the target color! Play again?' : 'You ran out of moves. Play again?'}</p>
-        <div style={{ marginTop: 24 }}>
-          <button onClick={onOk} style={{ marginRight: 16, padding: '8px 24px', fontSize: 16 }}>OK</button>
-          <button onClick={onCancel} style={{ padding: '8px 24px', fontSize: 16 }}>Cancel</button>
+        <div className="modal-buttons">
+          <button onClick={onOk} className="modal-button">OK</button>
+          <button onClick={onCancel} className="modal-button">Cancel</button>
         </div>
       </div>
     </div>
@@ -143,9 +140,9 @@ function App() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh', background: '#222', color: '#fff' }}>
+    <div className="app-container">
       {isLoading && <Loading />}
-      {error && <div style={{ color: 'red', margin: 20 }}>{error}</div>}
+      {error && <div className="error-message">{error}</div>}
       {data && !isLoading && !error && (
         <>
           <InfoPanel
